@@ -1,0 +1,47 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: school3
+  datasource:
+    url: jdbc:mysql://192.168.1.4:3306/school?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Tokyo
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    hikari:
+#      connection-timeout: 3000
+  # swagger需要配置 Swagger引用的Springfox使用的路径匹配是基于AntPathMatcher
+  #mvc:
+  #  pathmatch:
+  #    matching-strategy: ANT_PATH_MATCHER
+  #upload
+  servlet:
+    multipart:
+    #单个
+      max-file-size: 10MB
+    #群体
+      max-request-size: 100MB
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: GMT+9
+logging:
+  pattern:
+    dateformat: "yyyy-MM-dd'T'HH:mm:ss.SSS"
+mybatis-plus:
+#自定义xml路径
+  #mapper-locations: classpath:mapper/*.xml
+  #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
+  configuration:
+    map-underscore-to-camel-case: true
+    #打印日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+    #雪花算法
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      logic-delete-field: isDeleted
+      table-prefix: tb_
+school:
+  basepath: D:\eclipse-workspace\school\src\main\resources\public\upload\
