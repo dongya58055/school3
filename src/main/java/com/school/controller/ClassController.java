@@ -52,6 +52,7 @@ public class ClassController {
 		Page<Class> page2 = classService.page(page, lqw);
 		return Result.ok(page2);
 		
+		
 	}
 	
 	@PostMapping("/saveOrUpdateClazz")
