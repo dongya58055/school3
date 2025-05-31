@@ -67,4 +67,5 @@ public class ClassController {
 		return Result.ok();
 		
 	}
+	
 }
