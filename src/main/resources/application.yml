@@ -26,7 +26,7 @@ spring:
 #    time-zone: GMT+9
 logging:
   pattern:
-    dateformat: "yyyy-MM-dd'T'HH:mm:ss.SSS"
+    dateformat: "yyyy-MM-dd  HH:mm:ss.SSS"
 mybatis-plus:
 #自定义xml路径
   #mapper-locations: classpath:mapper/*.xml
@@ -44,4 +44,4 @@ mybatis-plus:
       logic-delete-field: isDeleted
       table-prefix: tb_
 school:
-  basepath: D:\eclipse-workspace\school\src\main\resources\public\upload\
+  basepath: D:\eclipse-workspace\school3\src\main\resources\public\upload\

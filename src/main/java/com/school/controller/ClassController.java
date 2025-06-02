@@ -69,4 +69,10 @@ public class ClassController {
 		
 	}
 	
+	@GetMapping("/getClazzs")
+	public Result getGrades() {
+		List<Class> list = classService.list();
+		return Result.ok(list);
+		
+	}
 }
