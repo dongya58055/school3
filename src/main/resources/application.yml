@@ -44,4 +44,4 @@ mybatis-plus:
       logic-delete-field: isDeleted
       table-prefix: tb_
 school:
-  basepath: D:\eclipse-workspace\school3\src\main\resources\public\upload\
+  basepath: D:\eclipse-workspace\school3\target\upload\

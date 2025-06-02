@@ -1,19 +1,24 @@
 package com.school.controller;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.imageio.ImageIO;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.dto.LoginForm;
 import com.school.eneity.Admin;
@@ -224,4 +229,44 @@ public class SystemController {
 
 	}
 
+	
+	/**
+	 * 描述:图片上传
+	 * 
+	 * @param 参数说明:MultipartFile 是 Java 中用于处理文件上传的一种接口，常用于 Spring 框架中，特别是在使用 Spring
+	 *                           MVC 时。 当我们通过表单或接口上传文件到服务器时，Spring 会自动将上传的文件封装为一个
+	 *                           MultipartFile 对象，供我们在控制器中处理。
+	 * @RequestPart 是 Spring 中用于处理 multipart/form-data 请求中 非表单字段（如文件）或嵌套 JSON 数据 的注解
+	 * @return 返回值:
+	 * @throws IOException 
+	 * @throws IllegalStateException 
+	 * @exception 异常:
+	 */
+	
+	@Value("${school.basepath}")
+	private String path;
+	
+	@PostMapping("/headerImgUpload")
+	public Result upload (@RequestPart("multipartFile") MultipartFile multipartFile) throws IllegalStateException, IOException {
+		//保存文件
+		//使用uuid重新生成文件名
+		String name = UUID.randomUUID().toString().replace("-", "").toLowerCase();
+		String originalFilename = multipartFile.getOriginalFilename();
+		//获取后缀
+		int lastIndexOf = originalFilename.lastIndexOf(".");
+		// 获取后缀名
+		String lastname = originalFilename.substring(originalFilename.lastIndexOf("."));
+		// 文件新名称
+		String fileName = name + lastname;
+		System.out.println(fileName);
+		//响应图片路径
+		String filePath=path.concat(fileName);
+		System.out.println(filePath);
+		//保存图片到本地
+		multipartFile.transferTo(new File(filePath));
+		// 返回图片路径
+		return Result.ok("upload/".concat(fileName));
+		
+	}
+	
 }
