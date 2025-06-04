@@ -4,10 +4,11 @@ spring:
   application:
     name: school3
   datasource:
-    url: jdbc:mysql://192.168.1.4:3306/school?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Tokyo
-    username: root
-    password: 123456
-    driver-class-name: com.mysql.cj.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.1.4:3306/school?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Tokyo
+      username: root
+      password: 123456
+      
 #    hikari:
 #      connection-timeout: 3000
   # swagger需要配置 Swagger引用的Springfox使用的路径匹配是基于AntPathMatcher

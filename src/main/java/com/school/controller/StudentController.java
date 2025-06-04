@@ -17,7 +17,6 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.school.eneity.Student;
 import com.school.service.StudentService;
-import com.school.service.impl.StudentServiceImpl;
 import com.util.MD5;
 import com.util.Result;
 
@@ -25,14 +24,10 @@ import com.util.Result;
 @RequestMapping("/sms/studentController")
 public class StudentController {
 
-    private final StudentServiceImpl studentServiceImpl;
-	
-	@Autowired
+    @Autowired
 	private StudentService studentService;
 
-    StudentController(StudentServiceImpl studentServiceImpl) {
-        this.studentServiceImpl = studentServiceImpl;
-    }
+    
 	/**
 	 * 描述: 分页插件
 	 * @param 参数说明:

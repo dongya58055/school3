@@ -246,6 +246,7 @@ public class SystemController {
 	@Value("${school.basepath}")
 	private String path;
 	
+	//上传图片
 	@PostMapping("/headerImgUpload")
 	public Result upload (@RequestPart("multipartFile") MultipartFile multipartFile) throws IllegalStateException, IOException {
 		//保存文件
@@ -266,6 +267,18 @@ public class SystemController {
 		multipartFile.transferTo(new File(filePath));
 		// 返回图片路径
 		return Result.ok("upload/".concat(fileName));
+		
+	}
+	
+	/**
+	 * 描述:
+	 * @param 参数说明:
+	 * @return 返回值:
+	 * @exception 异常:
+	 */
+	@PostMapping("/")
+	public Result password() {
+		return null;
 		
 	}
 	
