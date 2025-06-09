@@ -255,8 +255,7 @@ public class SystemController {
 		// 使用uuid重新生成文件名
 		String name = UUID.randomUUID().toString().replace("-", "").toLowerCase();
 		String originalFilename = multipartFile.getOriginalFilename();
-		// 获取后缀
-		int lastIndexOf = originalFilename.lastIndexOf(".");
+		
 		// 获取后缀名
 		String lastname = originalFilename.substring(originalFilename.lastIndexOf("."));
 		// 文件新名称
